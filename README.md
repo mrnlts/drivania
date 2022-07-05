@@ -13,26 +13,7 @@ $ php bin/console server:start
 
 Your server address in your preferred browser: **localhost:8000**
 
-
-Create the ride services table: 
-
-```
-create table ride_services
-
-(
-uuid        varchar(255) not null,
-pickup      json         not null,
-dropOff     json         not null,
-vehicleType enum('sedan', 'van', 'suv')         not null
-);
-
-create unique index ride_services_uuid_uindex
-on ride_services (uuid);
-
-alter table ride_services
-add constraint ride_services_pk
-primary key (uuid);
-```
+Run migrations.
 
 ### 2) .env
 
