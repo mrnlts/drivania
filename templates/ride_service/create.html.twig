@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div>
+    <h2>Create a new ride service</h2>
+    <form>
+        <div>
+            {{ form_start(form) }}
+            {{ form(form) }}
+            {{ form_end(form) }}
+        </div>
+    </form>
+</div>
+{% endblock %}
