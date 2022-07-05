@@ -2,6 +2,16 @@
 
 ### 1) Installation
 
+
+Install the dependencies and start the server.
+
+```sh
+$ cd drivania
+$ composer install
+$ php bin/console server:start
+```
+
+
 Create the ride services table: 
 
 ```
@@ -21,5 +31,6 @@ alter table ride_services
 add constraint ride_services_pk
 primary key (uuid);
 ```
+
 
 [... to be completed]
