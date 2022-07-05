@@ -2,9 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\Crud;
-
-use App\Form\CrudType;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -33,8 +31,13 @@ class RideServiceController extends AbstractController
     /**
      * @Route("/ride_service/create", methods={"POST"})
      */
-    public function createService()
+    public function createService(Request $request, ManagerRegistry $doctrine)
     {
-        die("I am the post route");
+        $rideService = $request->request->all();
+
+        $em = $doctrine->getManager();
+        $em->persist(json_decode(json_encode($rideService)));
+        $em->flush();
+        return $this->redirect('/ride_service');
     }
 }
