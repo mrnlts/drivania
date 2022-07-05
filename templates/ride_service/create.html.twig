@@ -6,14 +6,32 @@
     {% for message in app.flashes('notification') %}
         {{ message }}
     {% endfor %}
-    <form>
-        <div>
-            {{ form_start(form) }}
-                {{ form(form) }}
-                <p>*Vehicle can only be 'sedan', 'van' or 'suv'</p>
-                <button>Submit</button>
-            {{ form_end(form) }}
-        </div>
+    <form action="/ride_service/create" method="post">
+        <label>Uuid</label>
+        <input name="uuid"/>
+        <br>
+
+        <label>Pick up</label>
+        <input name="pickup[name]" placeholder="Name"/>
+        <input name="pickup[latitude]" placeholder="Latitude"/>
+        <input name="pickup[longitude]" placeholder="Longitude"/>
+        <br>
+
+        <label>Drop off</label>
+        <input name="drop_off[name]" placeholder="Name"/>
+        <input name="drop_off[latitude]" placeholder="Latitude"/>
+        <input name="drop_off[longitude]" placeholder="Longitude"/>
+        <br>
+
+        <label>Vehicle type</label>
+        <select name="vehicle">
+            <option value="sedan">Sedan</option>
+            <option value="suv">Suv</option>
+            <option value="van">Van</option>
+        </select>
+        <br>
+
+        <button type="submit">Submit</button>
     </form>
 </div>
 {% endblock %}

@@ -12,7 +12,9 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class RideServiceController extends AbstractController
 {
-    #[Route('/ride_service', name: 'main')]
+    /**
+     * @Route("/ride_service/", methods={"GET"})
+     */
     public function index(): Response
     {
         return $this->render('ride_service/index.html.twig', [
@@ -20,21 +22,19 @@ class RideServiceController extends AbstractController
         ]);
     }
 
-    #[Route('/ride_service/create', name: 'create')]
-    public function create(Request $request){
+    /**
+     * @Route("/ride_service/create", methods={"GET"})
+     */
+    public function create(): Response
+    {
+        return $this->render('ride_service/create.html.twig');
+    }
 
-        $crud = new Crud();
-        $form = $this->createForm(CrudType::class, $crud);
-        $form->handleRequest($request);
-
-        if($form->isSubmitted() && $form->isValid()){
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($crud);
-            $em->flush();
-            $this->addFlash('notification', 'Successfully submitted');
-        }
-        return $this->render('ride_service/create.html.twig', [
-            'form' => $form->createView()
-        ]);
+    /**
+     * @Route("/ride_service/create", methods={"POST"})
+     */
+    public function createService()
+    {
+        die("I am the post route");
     }
 }
