@@ -3,10 +3,15 @@
 {% block body %}
 <div>
     <h2>Create a new ride service</h2>
+    {% for message in app.flashes('notification') %}
+        {{ message }}
+    {% endfor %}
     <form>
         <div>
             {{ form_start(form) }}
-            {{ form(form) }}
+                {{ form(form) }}
+                <p>*Vehicle can only be 'sedan', 'van' or 'suv'</p>
+                <button>Submit</button>
             {{ form_end(form) }}
         </div>
     </form>
