@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Crud;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,6 +18,17 @@ class RideServiceController extends AbstractController
     {
         return $this->render('ride_service/index.html.twig', [
             'controller_name' => 'RideServiceController',
+        ]);
+    }
+    /**
+     * @Route("/ride_service/all", methods={"GET"})
+     */
+    public function all(ManagerRegistry $doctrine): Response
+    {
+        $crud = new Crud();
+        $allRides = $doctrine->getRepository($crud)->findAll();
+        return $this->render('ride_service/all.html.twig', [
+            'allRides' => $allRides,
         ]);
     }
 

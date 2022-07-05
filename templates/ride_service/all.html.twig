@@ -1,0 +1,13 @@
+{% for ride in allRides %}
+    <div>
+        <h2>Uuid: {{ ride.uuid }}</h2>
+        
+        <h2>Pickup</h2>
+        <p>Name: {{ ride.pickup.name }}</p>
+        <p>Coordinates: longitude {{ ride.pickup.longitude }}, latitude {{ ride.pickup.latitude }}</p>
+
+        <h2>Drop-off</h2>
+        <p>Name: {{ ride.drop_off.name }}</p>
+        <p>Coordinates: longitude {{ ride.drop_off.longitude }}, latitude {{ ride.drop_off.latitude }}</p>
+    </div>
+{% endfor %}
