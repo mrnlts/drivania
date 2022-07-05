@@ -45,3 +45,5 @@ primary key (uuid);
 - Form validation
 - Make vehicle_type field enum
 - Start update and delete routes
+- Testing
+- Dockerize the app
